@@ -135,7 +135,6 @@ class TestPredicateActivityInterceptor:
         self,
         interceptor: PredicateActivityInterceptor,
         mock_authority_client: MagicMock,
-        mock_next_interceptor: MagicMock,
     ) -> None:
         """Test that the authorization request has correct structure."""
         mock_authority_client.authorize.return_value = MockAuthorizationDecision(allowed=True)
