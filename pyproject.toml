@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "predicate-temporal"
+name = "pypredicate-temporal"
 version = "0.1.0"
 description = "Temporal.io Worker Interceptor for Predicate Authority Zero-Trust authorization"
 readme = "README.md"
