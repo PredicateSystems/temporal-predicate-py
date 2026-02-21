@@ -10,12 +10,6 @@ import hashlib
 import json
 from typing import Any
 
-from temporalio.worker import (
-    ActivityInboundInterceptor,
-    ExecuteActivityInput,
-    Interceptor,
-)
-
 from predicate_authority import AuthorityClient
 from predicate_contracts import (
     ActionRequest,
@@ -23,6 +17,11 @@ from predicate_contracts import (
     PrincipalRef,
     StateEvidence,
     VerificationEvidence,
+)
+from temporalio.worker import (
+    ActivityInboundInterceptor,
+    ExecuteActivityInput,
+    Interceptor,
 )
 
 
