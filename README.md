@@ -4,6 +4,30 @@ Temporal.io Worker Interceptor for Predicate Authority Zero-Trust authorization.
 
 This package provides a pre-execution security gate for all Temporal Activities, enforcing cryptographic authorization mandates before any activity code runs.
 
+## Prerequisites
+
+This package requires the **Predicate Authority Sidecar** daemon to be running. The sidecar is a lightweight Rust binary that handles policy evaluation and mandate signing.
+
+| Resource | Link |
+|----------|------|
+| Sidecar Repository | [github.com/PredicateSystems/predicate-authority-sidecar](https://github.com/PredicateSystems/predicate-authority-sidecar) |
+| Download Binaries | [Latest Releases](https://github.com/PredicateSystems/predicate-authority-sidecar/releases) |
+| License | MIT / Apache 2.0 |
+
+### Quick Sidecar Setup
+
+```bash
+# Download the latest release for your platform
+# Linux x64, macOS x64/ARM64, Windows x64 available
+
+# Extract and run
+tar -xzf predicate-authorityd-*.tar.gz
+chmod +x predicate-authorityd
+
+# Start with a policy file
+./predicate-authorityd --port 8787 --policy-file policy.json
+```
+
 ## Installation
 
 ```bash
