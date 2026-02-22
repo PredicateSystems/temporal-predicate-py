@@ -6,12 +6,16 @@ WORKDIR /app
 # Install system dependencies
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-# Copy pyproject.toml and install dependencies
-COPY pyproject.toml ./
-RUN pip install --no-cache-dir .
+# Copy project files required for build (including README.md required by pyproject.toml)
+COPY pyproject.toml README.md ./
 
 # Copy source code
 COPY src/ ./src/
+
+# Install the package
+RUN pip install --no-cache-dir .
+
+# Copy demo files
 COPY examples/demo/ ./examples/demo/
 
 # Set Python path
