@@ -4,28 +4,42 @@ Temporal.io Worker Interceptor for Predicate Authority Zero-Trust authorization.
 
 This package provides a pre-execution security gate for all Temporal Activities, enforcing cryptographic authorization mandates before any activity code runs.
 
-## Prerequisites
+## Sidecar Prerequisite
 
-This package requires the **Predicate Authority Sidecar** daemon to be running. The sidecar is a lightweight Rust binary that handles policy evaluation and mandate signing.
+This package requires the **Predicate Authority Sidecar** daemon to be running. The sidecar is a high-performance Rust binary that handles policy evaluation and mandate signing locally—no data leaves your infrastructure.
 
 | Resource | Link |
 |----------|------|
-| Sidecar Repository | [github.com/PredicateSystems/predicate-authority-sidecar](https://github.com/PredicateSystems/predicate-authority-sidecar) |
+| Sidecar Repository | [predicate-authority-sidecar](https://github.com/PredicateSystems/predicate-authority-sidecar) |
 | Download Binaries | [Latest Releases](https://github.com/PredicateSystems/predicate-authority-sidecar/releases) |
 | License | MIT / Apache 2.0 |
 
 ### Quick Sidecar Setup
 
+**Option A: Docker (Recommended)**
 ```bash
-# Download the latest release for your platform
-# Linux x64, macOS x64/ARM64, Windows x64 available
+docker run -d -p 8787:8787 ghcr.io/predicatesystems/predicate-authorityd:latest
+```
 
-# Extract and run
-tar -xzf predicate-authorityd-*.tar.gz
+**Option B: Download Binary**
+```bash
+# macOS (Apple Silicon)
+curl -fsSL https://github.com/PredicateSystems/predicate-authority-sidecar/releases/latest/download/predicate-authorityd-darwin-arm64.tar.gz | tar -xz
 chmod +x predicate-authorityd
-
-# Start with a policy file
 ./predicate-authorityd --port 8787 --policy-file policy.json
+
+# Linux x64
+curl -fsSL https://github.com/PredicateSystems/predicate-authority-sidecar/releases/latest/download/predicate-authorityd-linux-x64.tar.gz | tar -xz
+chmod +x predicate-authorityd
+./predicate-authorityd --port 8787 --policy-file policy.json
+```
+
+See [all platform binaries](https://github.com/PredicateSystems/predicate-authority-sidecar/releases) for Linux ARM64, macOS Intel, and Windows.
+
+**Verify it's running:**
+```bash
+curl http://localhost:8787/health
+# {"status":"ok"}
 ```
 
 ## Installation
