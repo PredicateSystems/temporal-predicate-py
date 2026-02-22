@@ -2,6 +2,8 @@
 
 Temporal.io Worker Interceptor for Predicate Authority Zero-Trust authorization.
 
+**Powered by [predicate-authority](https://github.com/PredicateSystems/predicate-authority) SDK:** [Python](https://github.com/PredicateSystems/predicate-authority) | [TypeScript](https://github.com/PredicateSystems/predicate-authority-ts)
+
 This package provides a pre-execution security gate for all Temporal Activities, enforcing cryptographic authorization mandates before any activity code runs.
 
 ## Sidecar Prerequisite
