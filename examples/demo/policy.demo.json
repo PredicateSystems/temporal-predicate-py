@@ -1,0 +1,36 @@
+{
+  "rules": [
+    {
+      "name": "deny-delete-operations",
+      "effect": "deny",
+      "principals": ["*"],
+      "actions": ["delete_*"],
+      "resources": ["*"],
+      "required_labels": []
+    },
+    {
+      "name": "deny-admin-operations",
+      "effect": "deny",
+      "principals": ["*"],
+      "actions": ["admin_*"],
+      "resources": ["*"],
+      "required_labels": []
+    },
+    {
+      "name": "deny-drop-operations",
+      "effect": "deny",
+      "principals": ["*"],
+      "actions": ["drop_*"],
+      "resources": ["*"],
+      "required_labels": []
+    },
+    {
+      "name": "allow-order-processing",
+      "effect": "allow",
+      "principals": ["temporal-worker"],
+      "actions": ["check_inventory", "charge_payment", "send_confirmation"],
+      "resources": ["*"],
+      "required_labels": []
+    }
+  ]
+}
