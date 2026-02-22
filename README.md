@@ -2,9 +2,29 @@
 
 Temporal.io Worker Interceptor for Predicate Authority Zero-Trust authorization.
 
+<video src="https://github.com/user-attachments/assets/511b6d38-90ab-413e-8af6-a89fc459eea5" autoplay loop muted playsinline></video>
+
 **Powered by [predicate-authority](https://github.com/PredicateSystems/predicate-authority) SDK:** [Python](https://github.com/PredicateSystems/predicate-authority) | [TypeScript](https://github.com/PredicateSystems/predicate-authority-ts)
 
 This package provides a pre-execution security gate for all Temporal Activities, enforcing cryptographic authorization mandates before any activity code runs.
+
+## Demo: Hack vs Fix
+
+See Predicate Authority block dangerous Temporal activities in real-time:
+
+```bash
+git clone https://github.com/PredicateSystems/predicate-temporal-python
+cd predicate-temporal-python/examples/demo
+./start-demo-native.sh
+```
+
+**Requirements:** Python 3.11+, [Temporal CLI](https://docs.temporal.io/cli#install)
+
+The demo shows 4 scenarios:
+1. **Legitimate order processing** → ✅ ALLOWED
+2. **Delete order attack** → ❌ BLOCKED by `deny-delete-operations`
+3. **Admin override attack** → ❌ BLOCKED by `deny-admin-operations`
+4. **Drop database attack** → ❌ BLOCKED by `deny-drop-operations`
 
 ## Sidecar Prerequisite
 
